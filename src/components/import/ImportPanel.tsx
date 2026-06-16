@@ -1,14 +1,15 @@
 import { useRef, useState, type DragEvent } from 'react';
-import { SampleLoadButton } from './SampleLoadButton';
+import { SampleLoadButton, type GpxSampleOption } from './SampleLoadButton';
 
 interface ImportPanelProps {
   onFile: (file: File) => void;
-  onDemo: () => void;
+  onSample: (sample: GpxSampleOption) => void;
+  samples: GpxSampleOption[];
   busy?: boolean;
   sourceName?: string;
 }
 
-export function ImportPanel({ onFile, onDemo, busy, sourceName }: ImportPanelProps) {
+export function ImportPanel({ onFile, onSample, samples, busy, sourceName }: ImportPanelProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
 
@@ -50,7 +51,7 @@ export function ImportPanel({ onFile, onDemo, busy, sourceName }: ImportPanelPro
         <button className="button" type="button" onClick={() => inputRef.current?.click()} disabled={busy}>
           Choose GPX
         </button>
-        <SampleLoadButton onLoad={onDemo} disabled={busy} />
+        <SampleLoadButton samples={samples} onLoad={onSample} disabled={busy} />
       </div>
     </section>
   );

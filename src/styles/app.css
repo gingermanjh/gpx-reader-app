@@ -705,3 +705,12 @@ p { font-size: 1rem; line-height: 1.6; color: #526071; }
   max-width: 100%;
   border-radius: 24px;
 }
+.sample-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+@media (max-width: 960px) {
+  .sample-actions { justify-content: flex-start; }
+}

@@ -53,16 +53,16 @@ export async function readLocalGpx(file: File): Promise<LocalGpxReadResult> {
   }
 }
 
-export async function readBundledDemoGpx(): Promise<LocalGpxReadResult> {
+export async function readBundledSampleGpx(filename = 'demo.gpx'): Promise<LocalGpxReadResult> {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}sample/demo.gpx`, { cache: 'no-store' });
+    const response = await fetch(`${import.meta.env.BASE_URL}sample/${filename}`, { cache: 'no-store' });
     if (!response.ok) {
       return {
         ok: false,
         diagnostics: [
           {
             severity: 'error',
-            code: 'demo-load-failed',
+            code: 'sample-load-failed',
             message: '샘플 GPX 파일을 불러오지 못했습니다.',
           },
         ],
@@ -71,21 +71,23 @@ export async function readBundledDemoGpx(): Promise<LocalGpxReadResult> {
 
     return {
       ok: true,
-      filename: 'demo.gpx',
+      filename,
       text: await response.text(),
       diagnostics: [],
     };
   } catch (error) {
     return {
       ok: false,
-      filename: 'demo.gpx',
+      filename,
       diagnostics: [
         {
           severity: 'error',
-          code: 'demo-load-failed',
+          code: 'sample-load-failed',
           message: error instanceof Error ? error.message : '샘플 GPX 파일을 불러오지 못했습니다.',
         },
       ],
     };
   }
 }
+
+export const readBundledDemoGpx = () => readBundledSampleGpx('demo.gpx');

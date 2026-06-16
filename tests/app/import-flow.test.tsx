@@ -28,6 +28,18 @@ describe('import flow', () => {
     expect(fetchSpy).toHaveBeenCalledWith(`${import.meta.env.BASE_URL}sample/demo.gpx`, { cache: 'no-store' });
   });
 
+
+  it('loads the bundled 35K sample through the sample pipeline', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(mixedEntities, { status: 200, headers: { 'Content-Type': 'application/gpx+xml' } }),
+    );
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: /load 35k sample/i }));
+
+    expect(await screen.findByTestId('mock-map')).toBeInTheDocument();
+    expect(fetchSpy).toHaveBeenCalledWith(`${import.meta.env.BASE_URL}sample/wonju-mammut-35k.gpx`, { cache: 'no-store' });
+  });
+
   it('reads a local GPX file without calling fetch', async () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
     render(<App />);

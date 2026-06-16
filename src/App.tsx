@@ -7,6 +7,7 @@ import { RacePlanner } from './components/race/RacePlanner';
 import { ExportReportButton } from './components/export/ExportReportButton';
 import { EntityBreakdown } from './components/details/EntityBreakdown';
 import { ImportPanel } from './components/import/ImportPanel';
+import type { GpxSampleOption } from './components/import/SampleLoadButton';
 import { ActivityMap } from './components/map/ActivityMap';
 import { SummaryCards } from './components/summary/SummaryCards';
 import { buildActivitySeries } from './lib/gpx/activitySeries';
@@ -15,7 +16,13 @@ import { parseGpx } from './lib/gpx/parseGpx';
 import { deriveStats } from './lib/gpx/deriveStats';
 import { toRenderModel } from './lib/gpx/toRenderModel';
 import type { GpxDiagnostic, GpxDocument } from './lib/gpx/types';
-import { readBundledDemoGpx, readLocalGpx } from './lib/io/readLocalGpx';
+import { readBundledSampleGpx, readLocalGpx } from './lib/io/readLocalGpx';
+
+
+const GPX_SAMPLES: GpxSampleOption[] = [
+  { id: 'demo', label: 'Load demo', filename: 'demo.gpx' },
+  { id: 'wonju-35k', label: 'Load 35K sample', filename: 'wonju-mammut-35k.gpx' },
+];
 
 interface AppState {
   status: 'empty' | 'loading' | 'ready' | 'error';
@@ -40,10 +47,10 @@ export default function App() {
     consumeReadResult(readResult.text, readResult.filename, readResult.diagnostics);
   }
 
-  async function loadDemo() {
+  async function loadSample(sample: GpxSampleOption) {
     setSelectedRange(undefined);
-    setState((current) => ({ ...current, status: 'loading', sourceName: 'demo.gpx', diagnostics: [] }));
-    const readResult = await readBundledDemoGpx();
+    setState((current) => ({ ...current, status: 'loading', sourceName: sample.filename, diagnostics: [] }));
+    const readResult = await readBundledSampleGpx(sample.filename);
     consumeReadResult(readResult.text, readResult.filename, readResult.diagnostics);
   }
 
@@ -71,7 +78,7 @@ export default function App() {
         <p>Track, route, waypoint, segment 구조를 보존해 지도와 기본 통계로 보여주는 MVP입니다.</p>
       </header>
 
-      <ImportPanel onFile={loadFile} onDemo={loadDemo} busy={state.status === 'loading'} sourceName={state.sourceName} />
+      <ImportPanel onFile={loadFile} onSample={loadSample} samples={GPX_SAMPLES} busy={state.status === 'loading'} sourceName={state.sourceName} />
 
       {state.status === 'ready' ? (
         <div className="export-toolbar">
