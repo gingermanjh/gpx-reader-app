@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="test" xmlns="http://www.topografix.com/GPX/1/1">
+  <trk><name>Two segments</name>
+    <trkseg>
+      <trkpt lat="37.0000" lon="127.0000"><ele>10</ele><time>2026-06-15T00:00:00Z</time></trkpt>
+      <trkpt lat="37.0010" lon="127.0010"><ele>20</ele><time>2026-06-15T00:01:00Z</time></trkpt>
+    </trkseg>
+    <trkseg>
+      <trkpt lat="37.0020" lon="127.0020"><ele>15</ele><time>2026-06-15T00:03:00Z</time></trkpt>
+      <trkpt lat="37.0030" lon="127.0030"><ele>30</ele><time>2026-06-15T00:04:00Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

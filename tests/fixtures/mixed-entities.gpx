@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="test" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Mixed</name><time>2026-06-15T00:00:00Z</time></metadata>
+  <wpt lat="37.0100" lon="127.0100"><name>Water</name></wpt>
+  <rte><name>Plan</name>
+    <rtept lat="37.0000" lon="127.0000"><name>A</name></rtept>
+    <rtept lat="37.0100" lon="127.0100"><name>B</name></rtept>
+  </rte>
+  <trk><name>Track</name><trkseg>
+    <trkpt lat="37.0000" lon="127.0000"><ele>10</ele><time>2026-06-15T00:00:00Z</time></trkpt>
+    <trkpt lat="37.0050" lon="127.0050"><ele>30</ele><time>2026-06-15T00:05:00Z</time></trkpt>
+  </trkseg></trk>
+</gpx>

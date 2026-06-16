@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="gpx-reader-demo"
+     xmlns="http://www.topografix.com/GPX/1/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Namsan Demo Activity</name>
+    <desc>Sample GPX with waypoint, route, and multi-segment track.</desc>
+    <time>2026-06-15T00:00:00Z</time>
+  </metadata>
+  <wpt lat="37.551200" lon="126.988200">
+    <ele>262.0</ele>
+    <name>N Seoul Tower</name>
+    <desc>Demo waypoint</desc>
+  </wpt>
+  <rte>
+    <name>Planned Namsan approach</name>
+    <rtept lat="37.556300" lon="126.972300"><name>Start</name></rtept>
+    <rtept lat="37.553800" lon="126.981000"><name>Climb</name></rtept>
+    <rtept lat="37.551200" lon="126.988200"><name>Tower</name></rtept>
+  </rte>
+  <trk>
+    <name>Recorded Namsan walk</name>
+    <trkseg>
+      <trkpt lat="37.556300" lon="126.972300"><ele>45.0</ele><time>2026-06-15T00:10:00Z</time></trkpt>
+      <trkpt lat="37.555300" lon="126.975400"><ele>82.0</ele><time>2026-06-15T00:16:00Z</time></trkpt>
+      <trkpt lat="37.553800" lon="126.981000"><ele>138.0</ele><time>2026-06-15T00:24:00Z</time></trkpt>
+    </trkseg>
+    <trkseg>
+      <trkpt lat="37.553500" lon="126.982800"><ele>156.0</ele><time>2026-06-15T00:28:00Z</time></trkpt>
+      <trkpt lat="37.552500" lon="126.985300"><ele>211.0</ele><time>2026-06-15T00:36:00Z</time></trkpt>
+      <trkpt lat="37.551200" lon="126.988200"><ele>262.0</ele><time>2026-06-15T00:45:00Z</time></trkpt>
+    </trkseg>
+  </trk>
+</gpx>
